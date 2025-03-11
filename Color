@@ -1,0 +1,66 @@
+// Kelas abstrak Shape
+abstract class Shape {
+    protected String color; // Atribut warna
+
+    // Konstruktor
+    public Shape(String color) {
+        this.color = color;
+    }
+
+    // Method abstrak untuk luas
+    abstract double getArea();
+
+    // Method untuk menampilkan warna
+    public String getColor() {
+        return color;
+    }
+}
+
+// Kelas Triangle (Segitiga) yang mewarisi Shape
+class Triangle extends Shape {
+    private double base;
+    private double height;
+
+    // Konstruktor
+    public Triangle(String color, double base, double height) {
+        super(color);
+        this.base = base;
+        this.height = height;
+    }
+
+    // Implementasi metode getArea()
+    @Override
+    double getArea() {
+        return 0.5 * base * height;
+    }
+}
+
+// Kelas Circle (Lingkaran) yang mewarisi Shape
+class Circle extends Shape {
+    private double radius;
+
+    // Konstruktor
+    public Circle(String color, double radius) {
+        super(color);
+        this.radius = radius;
+    }
+
+    // Implementasi metode getArea()
+    @Override
+    double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Kelas utama untuk menjalankan program
+public class Main {
+    public static void main(String[] args) {
+        // Membuat objek segitiga
+        Triangle triangle = new Triangle("Merah", 5, 10);
+        System.out.println("Segitiga berwarna " + triangle.getColor() + " memiliki luas: " + triangle.getArea());
+
+        // Membuat objek lingkaran
+        Circle circle = new Circle("Biru", 7);
+        System.out.println("Lingkaran berwarna " + circle.getColor() + " memiliki luas: " + circle.getArea());
+    }
+}
