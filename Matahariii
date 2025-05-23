@@ -1,0 +1,87 @@
+// Abstract Class Bunga
+abstract class Bunga {
+    protected String nama;
+    protected String warna;
+
+    public Bunga(String nama, String warna) {
+        this.nama = nama;
+        this.warna = warna;
+    }
+
+    // Metode abstrak
+    public abstract void caraBerkembangbiak();
+
+    // Metode konkret
+    public void tampilkanInfo() {
+        System.out.println("Bunga " + nama + " berwarna " + warna);
+    }
+}
+
+// Interface BisaDitanam
+interface BisaDitanam {
+    void tanam();
+    void siram();
+}
+
+// Kelas konkret Mawar
+class Mawar extends Bunga implements BisaDitanam {
+    public Mawar() {
+        super("Mawar", "Merah");
+    }
+
+    @Override
+    public void caraBerkembangbiak() {
+        System.out.println("Berkembang biak dengan stek batang");
+    }
+
+    @Override
+    public void tanam() {
+        System.out.println("Menanam mawar di pot dengan tanah subur");
+    }
+
+    @Override
+    public void siram() {
+        System.out.println("Menyiram mawar 2 kali sehari");
+    }
+}
+
+// Kelas konkret Anggrek
+class Anggrek extends Bunga implements BisaDitanam {
+    public Anggrek() {
+        super("Anggrek", "Ungu");
+    }
+
+    @Override
+    public void caraBerkembangbiak() {
+        System.out.println("Berkembang biak dengan umbi semu");
+    }
+
+    @Override
+    public void tanam() {
+        System.out.println("Menanam anggrek di media arang");
+    }
+
+    @Override
+    public void siram() {
+        System.out.println("Menyiram anggrek 3 kali seminggu");
+    }
+}
+
+// Kelas Main untuk demonstrasi
+public class Main {
+    public static void main(String[] args) {
+        Mawar mawar = new Mawar();
+        mawar.tampilkanInfo();
+        mawar.caraBerkembangbiak();
+        mawar.tanam();
+        mawar.siram();
+
+        System.out.println("\n");
+
+        Anggrek anggrek = new Anggrek();
+        anggrek.tampilkanInfo();
+        anggrek.caraBerkembangbiak();
+        anggrek.tanam();
+        anggrek.siram();
+    }
+}
